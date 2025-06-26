@@ -44,7 +44,7 @@ public class ControladorFestivo {
 
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(
-                    Map.of("Error en la fecha ingresada", cde.getMessage()));
+                    Map.of("Error en la fecha ingresada", e.getMessage()));
         }
     }
 }
