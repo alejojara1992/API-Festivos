@@ -85,4 +85,5 @@ public class Festivo {
     public void setTipo(Tipo tipo) {
         this.tipo = tipo;
     }
+
 }

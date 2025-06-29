@@ -11,3 +11,7 @@ public class ApiApplication {
 	}
 
 }
+
+// Las consultas se pueden realizar por fecha específica o por año:
+// http://localhost:8080/festivos/2025/11/17
+// http://localhost:8080/festivos/2025
