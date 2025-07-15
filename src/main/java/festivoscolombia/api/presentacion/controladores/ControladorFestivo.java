@@ -1,14 +1,17 @@
 package festivoscolombia.api.presentacion.controladores;
 
-import festivoscolombia.api.core.interfaces.servicios.IFestivoServicio;
-import festivoscolombia.api.core.dominio.dtos.FestivoDTO;
-
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import festivoscolombia.api.core.dominio.dtos.FestivoDTO;
+import festivoscolombia.api.core.interfaces.servicios.IFestivoServicio;
 
 @RestController
 @RequestMapping("/festivos")
@@ -38,9 +41,9 @@ public class ControladorFestivo {
                     .filter(f -> f.getFecha().equals(fecha))
                     .findFirst()
                     .<ResponseEntity<?>>map(f -> ResponseEntity.ok(
-                    Map.of("Fecha", f.getFecha(), "Tipo de festivo: ", f.getTipo(), "Festivo: ", f.getNombre())))
+                    Map.of("Fecha", f.getFecha(), "Tipo de festivo: ", f.getTipo(), "Festivo: ", f.getNombre(), "Festivo: ", true)))
                     .orElseGet(() -> ResponseEntity.ok(
-                    Map.of("La fecha ", fecha + " no es festivo")));
+                    Map.of("La fecha ", fecha + " no es festivo", "Festivo: ", false)));
 
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(
