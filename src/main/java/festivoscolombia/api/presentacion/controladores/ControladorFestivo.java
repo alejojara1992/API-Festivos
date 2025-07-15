@@ -41,9 +41,9 @@ public class ControladorFestivo {
                     .filter(f -> f.getFecha().equals(fecha))
                     .findFirst()
                     .<ResponseEntity<?>>map(f -> ResponseEntity.ok(
-                    Map.of("Fecha", f.getFecha(), "Tipo de festivo: ", f.getTipo(), "Festivo: ", f.getNombre(), "Festivo: ", true)))
+                    Map.of("Fecha", f.getFecha(), "Tipo de festivo: ", f.getTipo(), "Festivo: ", f.getNombre(), "EsFestivo: ", true)))
                     .orElseGet(() -> ResponseEntity.ok(
-                    Map.of("La fecha ", fecha + " no es festivo", "Festivo: ", false)));
+                    Map.of("La fecha ", fecha + " no es festivo", "EsFestivo: ", false)));
 
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(
